@@ -37,5 +37,30 @@ namespace HashSalt.Tests
             // Assert
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void BEqualts()
+        {
+            // Arrange
+            string tmp = GetBHash("henk");
+
+            // Act
+            bool expected = true;
+            bool actual = ConfirmBHash("henk", tmp);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void BNotEquals()
+        {
+            string tmp = GetBHash("henk");
+
+            bool expected = false;
+            bool actual = ConfirmBHash("henk...", tmp);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
